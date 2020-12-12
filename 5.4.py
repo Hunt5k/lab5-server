@@ -4,22 +4,22 @@ import socket
 
 s = socket.socket()
 
-PORT = 9898
-print("\n Server is listing on port :", PORT, "\n")
+PORT = 9090
+print("\n Server akan dengar port dari:", PORT, "\n")
 
 s.bind(('', PORT))
 
 s.listen(10)
 
 file = open("recv.txt", "wb") 
-print("\n Copied file name will be recv.txt at server side\n")
+print("\n file maklumat akan di muatturun ke dalam  recv.txt server\n")
 
 while True:
     
     conn, addr = s.accept()
 
     
-    msg = "\n\n|---------------------------------|\n Hi Client[IP address: "+ addr[0] + "], \n ֲֳ**SELAMAT DATANG KE Server** \n -Server\n|---------------------------------|\n \n\n"    
+    msg = "\n\n|______________________|\n Hai Client\n[IP address: "+ addr[0] + "], \n ֲֳ**SELAMAT DATANG KE Server** \n ->Server\n|______________________|\n \n\n"    
     conn.send(msg.encode())
     
     RecvData = conn.recv(1024)
@@ -28,9 +28,9 @@ while True:
         RecvData = conn.recv(1024)
 
     file.close()
-    print("\n File has been copied successfully \n")
+    print("\n File telah pun siap tiru \n")
 
     conn.close()
-    print("\n Server closed the connection \n")
+    print("\n tamat connection dari server \n")
 
     break
